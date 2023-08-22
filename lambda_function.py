@@ -16,10 +16,10 @@ def lambda_handler(event, context):
   #request_body = json.dumps(request_body_)
 
   url_post = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/"
-
-  response = urllib.request.Request(url_post,headers = {
-     'X-Siemens-Auth': 'test',"Content-Type": "application/json" },data=json.dumps(request_body))
-
+ headers = {"Content-Type": "application/json",
+            "X-Siemens-Auth": "test"}
+  response = urllib.request.Request(url_post,headers,data=json.dumps(request_body))
+ 
   base64_response = base64.b64encode(response.content).decode('utf-8')
   
   print(base64_response.json())
