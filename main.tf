@@ -63,7 +63,7 @@ resource "aws_security_group" "private_SG" {
     from_port   = 80
     to_port     = 80
     protocol    = "http"
-    cidr_blocks = [aws_vpc.vpc.cidr_block]
+    cidr_blocks = [data.aws_vpc.vpc.cidr_block]
   }
 
   egress {
