@@ -15,7 +15,7 @@ def lambda_handler(event, context):
 
   #request_body = json.dumps(request_body_)
 
-  url_post = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/"
+  url_post = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/candidate-email_serverless_lambda_stage/data"
   headers = {'Content-Type': 'application/json',
             'X-Siemens-Auth': 'test'}
   response = requests.post(url_post, data=json.dumps(request_body), headers=headers)
