@@ -41,7 +41,14 @@ resource "aws_lambda_function" "aws_lambda" {
     security_group_ids = [aws_security_group.private_SG.id]
   }
 }
+## creating a zip of fuction file 
 
+data "archive_file" "lambdazip" {
+  type        = "zip"
+  output_path = "lambda_fuction.zip"
+  source_dir = "./lambda_fuction.py"
+
+}
 
 ## output private subnet id to use in payload
 

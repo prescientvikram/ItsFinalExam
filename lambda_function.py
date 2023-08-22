@@ -1,4 +1,4 @@
-import requests
+import urllib.request
 import os
 import json
 import base64
@@ -19,8 +19,7 @@ def lambda_handler(event, context):
 
   request_headers = {'content-type': {'X-Siemens-Auth': 'test'}}
 
-  response = requests.post(url_post,headers=request_headers,
-                             data=json.dumps(request_body))
+  response = urllib.request.post(url_post,headers=request_headers,data=json.dumps(request_body))
 
   base64_response = base64.b64encode(response.content).decode('utf-8')
   
