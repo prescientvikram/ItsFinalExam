@@ -1,4 +1,4 @@
-import requests
+import urllib.request
 import os
 import json
 import base64
