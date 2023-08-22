@@ -1,7 +1,7 @@
 
 ##  creating private subnets whos ID needs in lambda payload
 resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.vpc.id
+  vpc_id     = data.aws_vpc.vpc.id
   cidr_block = "10.0.1.0/24"
 
   tags = {
@@ -12,11 +12,11 @@ resource "aws_subnet" "private_subnet" {
 ##  creating routing table for private subnet
 resource "aws_route_table" "routing_table" {
 
-    vpc_id = aws_vpc.vpc.id
+    vpc_id = data.aws_vpc.vpc.id
     route {
 
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_nat_gateway.nat.id
+        nat_gateway_id = data.aws_nat_gateway.nat.id
     }
 
 
@@ -33,7 +33,7 @@ resource "aws_lambda_function" "aws_lambda_function" {
   filename         = "lambda_function_payload.zip"
   source_code_hash = filebase64sha256("lambda_function_payload.zip")
   handler          = "use_requests.handler"
-  role             = aws_iam_role.lambda.arn
+  role             = data.aws_iam_role.lambda.arn
   runtime          = "python3.7"
 
   vpc_config {
@@ -55,7 +55,7 @@ output "private_subnet_id" {
 resource "aws_security_group" "private_SG" {
   name        = "private_SG"
   description = "allow request to remote api"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = data.aws_vpc.vpc.id
 
  
    ingress {
