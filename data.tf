@@ -10,11 +10,3 @@ data "aws_iam_role" "lambda" {
   name = "DevOps-Candidate-Lambda-Role"
 }
 
-## creating a zip of fuction file 
-
-data "archive_file" "lambda_file" {
-  type        = "zip"
-  output_path = "./lambda_function.zip"
-  source_dir = "./lambda_function.py"
-
-}
