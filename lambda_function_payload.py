@@ -4,7 +4,7 @@ import webbrowser
 
 import requests
 
-def use_requests ():
+def lambda_handler(event, context):
 
  payload = {
       "subnet_id": "aws_subnet.private_subnet.id",
