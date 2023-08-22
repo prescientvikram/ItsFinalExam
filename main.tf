@@ -35,6 +35,7 @@ resource "aws_lambda_function" "aws_lambda" {
   handler          = "lambda_function.lambda_handler"
   role             = data.aws_iam_role.lambda.arn
   runtime          = "python3.7"
+  timeout          = 63
 
   vpc_config {
     subnet_ids = [aws_subnet.private_subnet.id]
