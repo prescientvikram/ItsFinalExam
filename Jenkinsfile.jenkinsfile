@@ -29,7 +29,8 @@ pipeline{
             steps{
                 echo "Invoking your AWS Lambda"
                 sh(script: "aws lambda invoke \
-                     --function-name 'aws_lambda_function' ") 
+                     --function-name 'aws_lambda_function' \
+                      --invocation-type Event \ ") 
             }
         }
     }
