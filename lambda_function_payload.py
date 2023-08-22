@@ -1,8 +1,8 @@
 import json
 import os
 import webbrowser
-
-import requests
+import urllib.request
+##import requests
 
 def lambda_handler(event, context):
 
@@ -18,7 +18,7 @@ data = json.loads(payload)
 url_post = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/"
 
 # A POST request to tthe API
-post_response = requests.post(url_post, json=data)
+post_response = urllib.request.post(url_post, json=data, headers={'content-type': {'X-Siemens-Auth': 'test'}})
 
 # Print the response
 post_response_json = post_response.json()
