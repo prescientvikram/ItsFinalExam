@@ -30,8 +30,8 @@ resource "aws_route_table" "routing_table" {
 
 resource "aws_lambda_function" "aws_lambda" {
   function_name    = "aws_lambda"
-  filename         = data.archive_file.lambda_function.output_path
-  source_code_hash = filebase64sha256("data.archive_file.lambda_function.output_path")
+  filename         = data.archive_file.lambda_file.output_path
+  source_code_hash = filebase64sha256("data.archive_file.lambda_file.output_path")
   handler          = "lambda_handler.handler"
   role             = data.aws_iam_role.lambda.arn
   runtime          = "python3.7"
