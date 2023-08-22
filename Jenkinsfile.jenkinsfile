@@ -28,7 +28,7 @@ pipeline{
         stage("Invoke Lambda"){
             steps{
                 echo "Invoking your AWS Lambda"
-                sh "terraform destroy "
+                sh(script: 'aws lambda invoke  --function-name aws_lambda_function') 
             }
         }
     }
