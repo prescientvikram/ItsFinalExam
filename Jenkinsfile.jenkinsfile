@@ -31,6 +31,7 @@ pipeline{
                 sh(script: "aws lambda invoke \
                      --function-name 'aws_lambda_function' \
                       --invocation-type 'Event'\
+                      --log-type Tail
                         response.json ") 
             }
         }
