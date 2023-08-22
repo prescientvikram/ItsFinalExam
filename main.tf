@@ -58,13 +58,13 @@ resource "aws_security_group" "private_SG" {
   vpc_id      = data.aws_vpc.vpc.id
 
  
-   ingress {
-    description = "http from VPC"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "http"
-    cidr_blocks = [data.aws_vpc.vpc.cidr_block]
-  }
+  #  ingress {
+  #   description = "http from VPC"
+  #   from_port   = 80
+  #   to_port     = 80
+  #   protocol    = "http"
+  #   cidr_blocks = [data.aws_vpc.vpc.cidr_block]
+  # }
 
   egress {
     from_port   = 0
