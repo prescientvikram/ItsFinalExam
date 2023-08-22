@@ -28,8 +28,8 @@ resource "aws_route_table" "routing_table" {
 
 ## aws lambda fuction  to invoke an remote api 
 
-resource "aws_lambda_function" "aws_lambda" {
-  function_name    = "aws_lambda"
+resource "aws_lambda_function" "aws_lambda1" {
+  function_name    = "aws_lambda1"
   filename         = "lambda_function.zip"
   source_code_hash = filebase64sha256("lambda_function.zip")
   handler          = "lambda_function.lambda_handler"
