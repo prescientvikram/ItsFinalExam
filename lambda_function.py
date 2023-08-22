@@ -17,7 +17,11 @@ def lambda_handler(event, context):
 
   url_post = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/"
 
-  request_headers = {'content-type': {'X-Siemens-Auth': 'test'}}
+   request_headers = {
+        "Content-Type": "application/json"
+    }
+  request_headers = {
+    'content-type': 'X-Siemens-Auth': 'test'}
 
   response = urllib.request.Request(url_post,headers=request_headers,data=json.dumps(request_body))
 
