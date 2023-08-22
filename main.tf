@@ -16,7 +16,11 @@ resource "aws_route_table" "routing_table" {
     route {
 
         cidr_block = "0.0.0.0/0"
+<<<<<<< HEAD
         nat_gateway_id = data.aws_nat_gateway.nat.id
+=======
+        nat_gateway_id = aws_nat_gateway.nat.id
+>>>>>>> 7d05419954e5b14c1f9e172c355d607475fd08a8
     }
 
 
