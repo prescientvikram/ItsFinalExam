@@ -32,7 +32,7 @@ resource "aws_lambda_function" "aws_lambda_function" {
   function_name    = "aws_lambda_function"
   filename         = "lambda_function_payload.zip"
   source_code_hash = filebase64sha256("lambda_function_payload.zip")
-  handler          = "use_requests.handler"
+  handler          = "lambda_handler.handler"
   role             = data.aws_iam_role.lambda.arn
   runtime          = "python3.7"
 
