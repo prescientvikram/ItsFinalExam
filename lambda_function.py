@@ -1,25 +1,45 @@
+import boto3
 import requests
-import os
-import json
 import base64
+import json
+import os
+
+ 
 
 def lambda_handler(event, context):
+    # Get the value of an environment variable
 
-
-  payload = event
-  request_body = {
-      "subnet_id": "aws_subnet.private_subnet.id",
-      "name": "VIKRAM DHANRAJ WAGHMARE",
-      "email": "vikramwaghmare7995@gmail.com"
+ 
+  ##os.environ['subnet']
+    # Construct the data payload
+    payload = {
+        "subnet_id": "test",
+        "name": "VIKRAMW WAGHMARE",
+        "email": "vikramwaghmare7995@gmail.com"
     }
 
-  #request_body = json.dumps(request_body_)
-
-  url_post = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/candidate-email_serverless_lambda_stage/data"
-  headers = {'Content-Type': 'application/json',
-            'X-Siemens-Auth': 'test'}
-  response = requests.post(url_post, data=json.dumps(request_body), headers=headers)
  
-  base64_response = base64.b64encode(response.content).decode('utf-8')
-  
-  print(base64_response.json())
+
+    # Convert the payload to JSON
+    json_payload = json.dumps(payload)
+
+ 
+
+    headers ={
+        "Content-Type": "application/json",
+        "X-Siemens-Auth": "test"
+    }
+
+    print("lambda_handler 4.")
+
+ 
+
+    # Make a POST request to the remote API endpoint
+    url = "https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/candidate-email_serverless_lambda_stage/data"
+    response = requests.post(url, headers=headers, data=json_payload)
+
+ 
+
+ 
+
+    print("lambda_handler 5.",response)
