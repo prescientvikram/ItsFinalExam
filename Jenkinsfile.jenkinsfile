@@ -29,7 +29,7 @@ pipeline{
             steps{
                 echo "Invoking your AWS Lambda"
                 sh(script: "aws lambda invoke \
-                     --function-name 'aws_lambda1' \
+                     --function-name 'aws_lambda2' \
                       --cli-binary-format raw-in-base64-out \
                       --log-type 'Tail' \
                         response.json ") 
