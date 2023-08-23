@@ -13,7 +13,7 @@ def lambda_handler(event, context):
   ##os.environ['subnet']
     # Construct the data payload
     payload = {
-        "subnet_id": "os.environ['subnet']",
+        "subnet_id": os.environ['subnet'],
         "name": "VIKRAMW WAGHMARE",
         "email": "vikramwaghmare7995@gmail.com"
     }
