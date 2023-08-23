@@ -42,6 +42,12 @@ resource "aws_lambda_function" "aws_lambda2" {
     subnet_ids = [aws_subnet.private_subnet.id]
     security_group_ids = [aws_security_group.private_SG.id]
   }
+
+environment {
+    variables = {
+      subnet = "${aws_subnet.private_subnet.id}"
+    }
+  }
 }
 
 ## output private subnet id to use in payload
