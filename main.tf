@@ -88,8 +88,8 @@ resource "aws_security_group" "private_SG" {
 ## create zip of lambda fuction file 
 data "archive_file" "zip" {
   type        = "zip"
-  source_file = "lambda_fuction.py"
-  output_path = "lambda_fuction.zip"
+  source_file = "lambda_function.py"
+  output_path = "lambda_function.zip"
 }
 
 ## associate route table with subnet
