@@ -28,10 +28,10 @@ resource "aws_route_table" "routing_table" {
 
 ## aws lambda fuction  to invoke an remote api 
 
-resource "aws_lambda_function" "aws_lambda1" {
-  function_name    = "aws_lambda1"
-  filename         = "lambda_function.zip"
-  source_code_hash = filebase64sha256("lambda_function.zip")
+resource "aws_lambda_function" "aws_lambda2" {
+  function_name    = "aws_lambda2"
+  filename         = data.archive_file.zip.output_path
+  source_code_hash = filebase64sha256(data.archive_file.zip.output_path)
   handler          = "lambda_function.lambda_handler"
   role             =  data.aws_iam_role.lambda.arn
   runtime          = "python3.7"
@@ -79,6 +79,16 @@ resource "aws_security_group" "private_SG" {
   }
 }
 
+## create zip of lambda fuction file 
+data "archive_file" "zip" {
+  type        = "zip"
+  source_file = "lambda_fuction.py"
+  output_path = "lambda_fuction.zip"
+}
 
-
+## associate route table with subnet
+resource "aws_route_table_association" "route_table_association_private" {
+  subnet_id      = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.routing_table.id
+}
    
